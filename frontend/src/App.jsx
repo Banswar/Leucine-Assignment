@@ -23,8 +23,8 @@ function App() {
       }, []);
 
       return (
-        <div style={{ padding: "20px"}}>
-          <h1>Equipment Management</h1>
+        <div className='container' style={{ padding: "20px" }}>
+          <h1>Equipment Tracker</h1>
           <EquipmentForm
             editingItem={editingItem}
             refresh={fetchEquipment}
