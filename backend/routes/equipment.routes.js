@@ -15,15 +15,15 @@ router.get("/", (req, res) => {
 
 // Add new equipment
 router.post("/", (req, res) => {
-    const { name, type, status, lastCleaned } = req.body;
+    const { name, type, status, last_cleaned } = req.body;
     db.query(
-        "INSERT INTO equipment (name, type, status, lastCleaned) VALUES (?, ?, ?, ?)",
-        [name, type, status, lastCleaned],
+        "INSERT INTO equipment (name, type, status, last_cleaned) VALUES (?, ?, ?, ?)",
+        [name, type, status, last_cleaned],
         (err, results) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
-            res.json({ id: results.insertId, name, type, status, lastCleaned });
+            res.json({ id: results.insertId, name, type, status, last_cleaned });
         }
     );
 });
@@ -31,15 +31,15 @@ router.post("/", (req, res) => {
 // Update equipment
 router.put("/:id", (req, res) => {
     const { id } = req.params;
-    const { name, type, status, lastCleaned } = req.body;
+    const { name, type, status, last_cleaned } = req.body;
     db.query(
-        "UPDATE equipment SET name = ?, type = ?, status = ?, lastCleaned = ? WHERE id = ?",
-        [name, type, status, lastCleaned, id],
+        "UPDATE equipment SET name = ?, type = ?, status = ?, last_cleaned = ? WHERE id = ?",
+        [name, type, status, last_cleaned, id],
         (err, results) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
-            res.json({ id, name, type, status, lastCleaned });
+            res.json({ id, name, type, status, last_cleaned });
         }
     );
 });
